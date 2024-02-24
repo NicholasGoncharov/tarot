@@ -4,9 +4,10 @@
             v-model="checked"
             :value="checked"
             :disabled="disabled"
+            :changeTheme="changeTheme"
             type="checkbox"
             class="peer sr-only"
-            @click="() => checked = !checked" />
+            @click="runChange" />
 
         <span
             class="absolute z-10 m-0.5 h-5 w-5 translate-x-0 rounded-full bg-white transition-transform peer-[:checked]:translate-x-6"></span>
@@ -14,13 +15,27 @@
 </template>
 
 <script setup lang="ts">
+import {type PropType} from "vue";
+
 const checked = defineModel<Boolean>('checked', {
     default: false
 })
 
-const props = defineProps({
+const changeTheme = defineModel<Boolean>('changeTheme', {
+    default: false
+})
+
+const runChange = () => {
+    if (changeTheme) {
+
+    }
+
+    checked.value = !checked.value;
+}
+
+defineProps({
     disabled: {
-        type: Boolean,
+        type: Boolean as PropType<boolean>,
         default: false
     }
 })

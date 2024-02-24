@@ -1,3 +1,9 @@
+@import './JockeyOne.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    font-family: 'JockeyOne';
+}
